@@ -1,7 +1,9 @@
 package com.moniliu.horoscopo
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -47,7 +49,17 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById (R.id.recyclerView)
 
-        adapter = HoroscopeAdapter(items = horoscopeList)
+        adapter = HoroscopeAdapter(items = horoscopeList) { position  ->
+            val horoscope = horoscopeList[position]
+
+
+            //navegar
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("HOROSCOPE_ID", horoscope.id)
+            startActivity(intent)
+
+
+        }
 
         recyclerView.adapter = adapter
 
