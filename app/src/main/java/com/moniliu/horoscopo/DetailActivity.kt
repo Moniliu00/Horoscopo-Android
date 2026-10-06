@@ -33,7 +33,6 @@ class DetailActivity : AppCompatActivity() {
 
 
 
-        val id =  intent.getStringExtra ("HOROSCOPE_ID")
         val name = intent.getIntExtra("HOROSCOPE_name",0)
 
 
@@ -42,14 +41,19 @@ class DetailActivity : AppCompatActivity() {
         val dates = intent.getIntExtra("HOROSCOPE.date",0)
 
 
+        val id = intent.getStringExtra("HOROSCOPE_ID")!!
+
+        val horoscope = Horoscope.getById (id)
+
+
 
 
 
         signImageView.setImageResource (icon)
         signNameTextView.setText(name)
 
-        supportActionBar?.title = id
-        supportActionBar?.subtitle = "subtitulo"
+        supportActionBar?.setTitle(horoscope.name )
+        supportActionBar?.setSubtitle(horoscope.dates)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
        // supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_search)
 

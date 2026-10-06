@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class HoroscopeAdapter(
-    val items: List<Horoscope>,
+    var items: List<Horoscope>,
     val onItemClick: (position: Int) -> Unit
 ) : RecyclerView.Adapter<HoroscopeViewHolder>() {
 
@@ -81,6 +81,11 @@ class HoroscopeAdapter(
 
     override fun getItemCount(): Int {
         return items.size
+    }
+    fun upDateData (dataSet: List<Horoscope>){
+        items = dataSet
+        notifyDataSetChanged()
+
     }
 }
 
