@@ -4,9 +4,9 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="8dp"
-    android:layout_marginVertical="3dp"
-    android:padding="8dp"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="12dp"
+    android:padding="18dp"
     android:background="@drawable/horoscope_item_background">
 
     <ImageView

@@ -3,9 +3,11 @@ package com.moniliu.horoscopo
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -56,6 +58,11 @@ class MainActivity : AppCompatActivity() {
             //navegar
             val intent = Intent(this, DetailActivity::class.java)
             intent.putExtra("HOROSCOPE_ID", horoscope.id)
+            intent.putExtra("HOROSCOPE_icon", horoscope.sign)
+            intent.putExtra ("HOROSCOPE_name", horoscope.name)
+            intent.putExtra("HOROSCOPE.date", horoscope.dates)
+
+
             startActivity(intent)
 
 
@@ -65,5 +72,30 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
-}
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.activity_main_menu, menu)
+
+        val searchMenuItem = menu.findItem(R.id.menu_search)
+        val searchView = searchMenuItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.i("SEARCH", "Buscando... $query")
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                Log.i("SEARCH", newText)
+                return true
+            }
+        })
+
+        return true
+
+    }
+
+
+
+    }
 
