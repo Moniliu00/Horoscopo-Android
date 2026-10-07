@@ -1,10 +1,8 @@
-package com.moniliu.horoscopo
+package com.moniliu.horoscopo.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -12,8 +10,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.math.log
-import kotlin.math.sign
+import com.moniliu.horoscopo.data.Horoscope
+import com.moniliu.horoscopo.adapters.HoroscopeAdapter
+import com.moniliu.horoscopo.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById (R.id.recyclerView)
 
-        adapter = HoroscopeAdapter(items = horoscopeList) { position  ->
+        adapter = HoroscopeAdapter(items = horoscopeList) { position ->
             val horoscope = horoscopeList[position]
 
 
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetailActivity::class.java)
             intent.putExtra("HOROSCOPE_ID", horoscope.id)
             intent.putExtra("HOROSCOPE_icon", horoscope.sign)
-            intent.putExtra ("HOROSCOPE_name", horoscope.name)
+            intent.putExtra("HOROSCOPE_name", horoscope.name)
             intent.putExtra("HOROSCOPE.date", horoscope.dates)
 
 
@@ -92,4 +91,3 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-

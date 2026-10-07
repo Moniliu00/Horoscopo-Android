@@ -1,4 +1,4 @@
-package com.moniliu.horoscopo
+package com.moniliu.horoscopo.adapters
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.moniliu.horoscopo.R
+import com.moniliu.horoscopo.data.Horoscope
 
 class HoroscopeAdapter(
     var items: List<Horoscope>,

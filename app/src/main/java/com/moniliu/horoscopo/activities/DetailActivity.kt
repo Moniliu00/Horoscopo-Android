@@ -1,21 +1,21 @@
-package com.moniliu.horoscopo
+package com.moniliu.horoscopo.activities
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.widget.TextView
-
+import com.moniliu.horoscopo.data.Horoscope
+import com.moniliu.horoscopo.R
 
 class DetailActivity : AppCompatActivity() {
     lateinit var signImageView: ImageView
     lateinit var signNameTextView : TextView
+    lateinit var signDateTextView : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +28,16 @@ class DetailActivity : AppCompatActivity() {
         }
         signImageView = findViewById(R.id.signImageView)
         signNameTextView = findViewById(R.id.signNameTextView)
-
-        val signNameTextView = findViewById<TextView>(R.id.signNameTextView)
+        signDateTextView = findViewById(R.id.signDateTextView)
 
 
 
         val name = intent.getIntExtra("HOROSCOPE_name",0)
 
-
-
         val icon = intent.getIntExtra("HOROSCOPE_icon",0)
-        val dates = intent.getIntExtra("HOROSCOPE.date",0)
+
+        val dates = intent.getIntExtra("HOROSCOPE.date", 0)
+
 
 
         val id = intent.getStringExtra("HOROSCOPE_ID")!!
@@ -49,8 +48,11 @@ class DetailActivity : AppCompatActivity() {
 
 
 
-        signImageView.setImageResource (icon)
-        signNameTextView.setText(name)
+        signImageView.setImageResource (horoscope.sign)
+        signNameTextView.setText(horoscope.name)
+        signDateTextView.setText(horoscope.dates)
+
+
 
         supportActionBar?.setTitle(horoscope.name )
         supportActionBar?.setSubtitle(horoscope.dates)
