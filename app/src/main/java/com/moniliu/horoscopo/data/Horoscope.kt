@@ -2,7 +2,7 @@ package com.moniliu.horoscopo.data
 
 import com.moniliu.horoscopo.R
 
-data class Horoscope (
+data class     Horoscope (
     val id: String,
     val name:Int,
     val dates:Int,

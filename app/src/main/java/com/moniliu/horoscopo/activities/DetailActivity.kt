@@ -1,6 +1,10 @@
 package com.moniliu.horoscopo.activities
 
+import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
+import android.provider.Telephony
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,11 +15,23 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.moniliu.horoscopo.data.Horoscope
 import com.moniliu.horoscopo.R
+import com.moniliu.horoscopo.utils.SessionManager
 
 class DetailActivity : AppCompatActivity() {
+
+    lateinit var session: SessionManager
+
+    lateinit var horoscope : Horoscope
+
+    var isFavorite = false
+    lateinit var favoriteMenuItem: MenuItem
+
     lateinit var signImageView: ImageView
-    lateinit var signNameTextView : TextView
-    lateinit var signDateTextView : TextView
+
+    lateinit var nameTextView : TextView
+
+    lateinit var datesTextView : TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +42,12 @@ class DetailActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        session = SessionManager(this)
+
         signImageView = findViewById(R.id.signImageView)
-        signNameTextView = findViewById(R.id.signNameTextView)
-        signDateTextView = findViewById(R.id.signDateTextView)
+        nameTextView= findViewById(R.id.nameTextView)
+        datesTextView = findViewById(R.id.datesTextView)
 
 
 
@@ -39,18 +58,15 @@ class DetailActivity : AppCompatActivity() {
         val dates = intent.getIntExtra("HOROSCOPE.date", 0)
 
 
-
         val id = intent.getStringExtra("HOROSCOPE_ID")!!
 
-        val horoscope = Horoscope.getById (id)
-
-
+        horoscope = Horoscope.getById (id)
 
 
 
         signImageView.setImageResource (horoscope.sign)
-        signNameTextView.setText(horoscope.name)
-        signDateTextView.setText(horoscope.dates)
+        nameTextView.setText(horoscope.name)
+        datesTextView.setText(horoscope.dates)
 
 
 
@@ -59,6 +75,21 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
        // supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_search)
 
+        // preguntar si el horoscopo es favorito para rellenar el corazon del menu
+
+        isFavorite = session.isFavorite (id)
+        // todo : cambiar icono menu
+
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.activity_detail_menu, menu)
+
+      favoriteMenuItem =  menu.findItem(R.id.menu_favorite)
+
+        setFavoriteIcon()
+        return true
 
     }
 
@@ -70,20 +101,44 @@ class DetailActivity : AppCompatActivity() {
     }
 
             R.id.menu_favorite ->{
-                // me haces una cosa
-                Toast.makeText(this, "Favorito", Toast.LENGTH_SHORT).show()
+               if (isFavorite){
+                   session.setFavorite("")
+
+               }else{
+                   session.setFavorite(horoscope.id)
+
+               }
+                isFavorite = !isFavorite
+                setFavoriteIcon()
                 true
             }
             R.id.menu_share -> {
-               // me haces otra cosa
-                Toast.makeText(this, "Compartir", Toast.LENGTH_SHORT).show()
+                val sendIntent = Intent()
+                   sendIntent.action = Intent.ACTION_SEND
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my horoscope: ${getString(horoscope.name)}.")
+                    sendIntent.type = "text/plain"
 
+
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
                 true
 
             }
             else -> super.onOptionsItemSelected(item)
 
         }
+    }
+
+    fun setFavoriteIcon (){
+
+        if (isFavorite){
+            favoriteMenuItem.setIcon(R.drawable.ic_favorite_selected)
+
+        }else{
+            favoriteMenuItem.setIcon(R.drawable.ic_favorite)
+
+        }
+
     }
 
 }

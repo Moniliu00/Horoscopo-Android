@@ -61,6 +61,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume(){
+        super.onResume()
+
+        adapter.notifyDataSetChanged()
+
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.activity_main_menu, menu)
 
