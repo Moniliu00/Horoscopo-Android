@@ -2,15 +2,14 @@ package com.moniliu.horoscopo.data
 
 import com.moniliu.horoscopo.R
 
-data class     Horoscope (
+data class Horoscope(
     val id: String,
-    val name:Int,
-    val dates:Int,
-    val sign:Int
+    val name: Int,
+    val dates: Int,
+    val sign: Int
+) {
 
-){
-
-    companion object{
+    companion object {
         private val horoscopeList: List<Horoscope> = listOf(
             Horoscope("aries", R.string.horoscope_name_aries, R.string.horoscope_date_aries, R.drawable.aries_icon),
             Horoscope("taurus", R.string.horoscope_name_taurus, R.string.horoscope_date_taurus, R.drawable.taurus_icon),
@@ -26,15 +25,13 @@ data class     Horoscope (
             Horoscope("pisces", R.string.horoscope_name_pisces, R.string.horoscope_date_pisces, R.drawable.pisces_icon)
         )
 
-        fun getAll() : List<Horoscope>{
+        fun getAll(): List<Horoscope> {
             return horoscopeList
-
         }
 
-      fun getById (id: String): Horoscope {
-
-           return horoscopeList.find  { it.id == id } !!
-      }
-
+        fun getById(id: String): Horoscope {
+            return horoscopeList.find { it.id == id }!!
+        }
     }
+
 }
