@@ -6,54 +6,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.DetailActivity"
     android:gravity="center_horizontal"
-    android:background="@drawable/backgraund">
+    android:background="@drawable/celestial_background"
+    android:padding="12dp"
+    tools:context=".activities.DetailActivity">
 
-    <ImageView
-        android:id="@+id/signImageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/aries_icon"
-        android:layout_margin="16dp"/>
-
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Horoscope name"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="12dp"
+        android:background="@drawable/detail_card_background">
 
-    <TextView
-        android:id="@+id/datesTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Horoscope dates"
-        android:textSize="16sp" />
+        <ImageView
+            android:id="@+id/signImageView"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/aries_icon"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horoscope name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/datesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horoscope dates"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary" />
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:fillViewport="true">
 
         <TextView
             android:id="@+id/predictionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Prediction..."
+            android:padding="16dp"
+            android:background="@drawable/detail_card_background"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"/>
+            tools:text="Prediction..." />
 
     </ScrollView>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="#FFF8FCFF"
+        app:itemIconTint="#806D5795"
+        app:itemTextColor="#FF6D5795"
         app:menu="@menu/activity_detail_navigation_menu" />
-
-
 
 
 </LinearLayout>

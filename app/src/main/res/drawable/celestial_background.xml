@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="800dp"
+    android:viewportWidth="360"
+    android:viewportHeight="800">
+
+    <!-- Fondo lila -->
+    <path
+        android:fillColor="#FFEDE4FA"
+        android:pathData="M0,0 H360 V800 H0 Z" />
+
+    <!-- Luna -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M285,55 A22,22 0,1 0,307,77 A18,18 0,0 1,285,55 Z" />
+
+    <!-- Estrellas -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M50,90 L53,98 L61,101 L53,104 L50,112 L47,104 L39,101 L47,98 Z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M145,160 L147,166 L153,168 L147,170 L145,176 L143,170 L137,168 L143,166 Z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M315,220 L318,228 L326,231 L318,234 L315,242 L312,234 L304,231 L312,228 Z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M75,300 L77,306 L83,308 L77,310 L75,316 L73,310 L67,308 L73,306 Z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M245,380 L248,386 L254,388 L248,390 L245,396 L242,390 L236,388 L242,386 Z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M125,470 L128,478 L136,481 L128,484 L125,492 L122,484 L114,481 L122,478 Z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M300,550 L303,556 L309,558 L303,560 L300,566 L297,560 L291,558 L297,556 Z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M55,650 L58,656 L64,658 L58,660 L55,666 L52,660 L46,658 L52,656 Z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M210,710 L213,716 L219,718 L213,720 L210,726 L207,720 L201,718 L207,716 Z" />
+
+    <!-- Pequeños puntos brillantes -->
+    <path
+        android:fillColor="#FFD8C7F5"
+        android:pathData="M100,130 m-2,0 a2,2 0,1 0,4,0 a2,2 0,1 0,-4,0
+                          M260,180 m-2,0 a2,2 0,1 0,4,0 a2,2 0,1 0,-4,0
+                          M180,270 m-2,0 a2,2 0,1 0,4,0 a2,2 0,1 0,-4,0
+                          M330,340 m-2,0 a2,2 0,1 0,4,0 a2,2 0,1 0,-4,0
+                          M35,420 m-2,0 a2,2 0,1 0,4,0 a2,2 0,1 0,-4,0
+                          M275,460 m-2,0 a2,2 0,1 0,4,0 a2,2 0,1 0,-4,0
+                          M170,580 m-2,0 a2,2 0,1 0,4,0 a2,2 0,1 0,-4,0
+                          M100,740 m-2,0 a2,2 0,1 0,4,0 a2,2 0,1 0,-4,0" />
+
+</vector>
